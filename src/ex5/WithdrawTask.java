@@ -15,7 +15,7 @@ public class WithdrawTask implements Runnable
   {
     acc = a;
   }
-  public void run()
+  public synchronized void run()
   {
     try
     {

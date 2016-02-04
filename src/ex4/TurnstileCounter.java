@@ -1,22 +1,28 @@
 package ex4;
 
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
+
 public class TurnstileCounter {
 
   static final long DELAY_VAL = 10000;
   long count = 0;
+  AtomicInteger s = new AtomicInteger();
+  
+  ReentrantLock lock = new ReentrantLock();
 
   public long getValue() {
+    count = s.get(); // sets long count equal to the value of atomic integer s.....
     return count;
   }
 
-  public void incr() {
-//   If the program initially does not fail, replace the count line with the lines below
-//    long n = count;
-//    //Spend some time to force preemtion
-//    for(long a=0; a<LockDemo.DELAY_VAL; a++);
-//    n = n + 1;
-//    count = n;
-
-    count++;
+  public synchronized void incr() {
+    lock.lock();
+      try {
+s.addAndGet(1);
+count++;
+      } finally {
+          lock.unlock();
+      }
   }
 }

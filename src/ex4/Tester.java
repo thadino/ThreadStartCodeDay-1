@@ -15,6 +15,7 @@ public class Tester {
     
     
     for (int i = 0; i < NUMBER_OF_TURNSTILES; i++) {
+       
       turnStiles[i] = new Turnstile(sharedCounter);
     }
     

@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * @author Lars Mortensen
  */
-class Ball {
+class Ball implements Runnable {
 
   private final int SLEEP_TIME = 30;
   Color color;

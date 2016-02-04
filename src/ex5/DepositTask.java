@@ -16,7 +16,7 @@ public class DepositTask implements Runnable
     acc = a;
   }
   @Override
-  public void run()
+  public synchronized void run()
   {
     try
     {
